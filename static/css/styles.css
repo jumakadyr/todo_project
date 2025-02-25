@@ -1,0 +1,212 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+header {
+    background-color: #333;
+    color: #fff;
+    padding: 10px 20px;
+}
+
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+nav ul li {
+    display: inline;
+    margin-right: 10px;
+}
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+}
+
+main {
+    padding: 20px;
+}
+
+footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 10px 20px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+.categories ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.categories ul li {
+    margin-bottom: 10px;
+}
+
+.categories ul li a {
+    text-decoration: none;
+    color: #333;
+}
+
+.latest-posts article {
+    background-color: #fff;
+    padding: 15px;
+    margin-bottom: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.latest-posts article h3 {
+    margin-top: 0;
+}
+
+.latest-posts article a {
+    text-decoration: none;
+    color: #008CBA;
+}
+
+/* Стили для страниц аутентификации */
+.auth-container {
+    max-width: 400px;
+    margin: 50px auto;
+    padding: 20px;
+    background: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    text-align: center;
+}
+
+.auth-container h2 {
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.auth-container form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.auth-container form p {
+    margin: 0;
+}
+
+.auth-container form label {
+    font-weight: bold;
+}
+
+.auth-container form input {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+.auth-btn {
+    background-color: #008CBA;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.auth-btn:hover {
+    opacity: 0.8;
+}
+
+.auth-container a {
+    color: #008CBA;
+    text-decoration: none;
+}
+
+.auth-container a:hover {
+    text-decoration: underline;
+}
+
+/* Стили для страницы профиля */
+.profile-container {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+.profile-header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.profile-header h1 {
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.profile-header p {
+    margin: 5px 0;
+    color: #666;
+}
+
+.profile-btn {
+    display: inline-block;
+    margin: 10px 5px;
+    padding: 10px 20px;
+    background-color: #008CBA;
+    color: white;
+    text-decoration: none;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+.profile-btn:hover {
+    opacity: 0.8;
+}
+
+.profile-posts, .profile-bookmarks, .profile-likes {
+    margin-bottom: 30px;
+}
+
+.profile-posts h2, .profile-bookmarks h2, .profile-likes h2 {
+    margin-bottom: 15px;
+    color: #333;
+    border-bottom: 2px solid #008CBA;
+    padding-bottom: 5px;
+}
+
+.profile-posts ul, .profile-bookmarks ul, .profile-likes ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.profile-posts li, .profile-bookmarks li, .profile-likes li {
+    margin-bottom: 10px;
+    padding: 10px;
+    background-color: #f9f9f9;
+    border-radius: 4px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.profile-posts a, .profile-bookmarks a, .profile-likes a {
+    text-decoration: none;
+    color: #008CBA;
+}
+
+.profile-posts a:hover, .profile-bookmarks a:hover, .profile-likes a:hover {
+    text-decoration: underline;
+}
+
+.post-date {
+    float: right;
+    color: #666;
+    font-size: 0.9em;
+}
