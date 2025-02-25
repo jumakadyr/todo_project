@@ -14,29 +14,29 @@ from account.forms import CustomPasswordChangeForm
 
 
 class CustomPasswordChangeView(LoginRequiredMixin, PasswordChangeView):
-    template_name = "auth/password_change.html"
+    template_name = "account/auth/password_change.html"
     form_class = CustomPasswordChangeForm
     success_url = reverse_lazy('account:password-change-done')
 
 
 class CustomPasswordChangeDoneView(LoginRequiredMixin, PasswordChangeDoneView):
-    template_name = "auth/password_change_done.html"
+    template_name = "account/auth/password_change_done.html"
 
 
 class CustomPasswordResetView(PasswordResetView):
-    template_name = "auth/password_reset.html"
-    email_template_name = "auth/password_reset_email.html"
+    template_name = "account/auth/password_reset.html"
+    email_template_name = "account/auth/password_reset_email.html"
     success_url = reverse_lazy('account:password-reset-done')
 
 
 class CustomPasswordResetDoneView(PasswordResetDoneView):
-    template_name = "auth/password_reset_done.html"
+    template_name = "account/auth/password_reset_done.html"
 
 
 class CustomPasswordResetConfirmView(PasswordResetConfirmView):
-    template_name = "auth/password_reset_confirm.html"
+    template_name = "account/auth/password_reset_confirm.html"
     success_url = reverse_lazy('account:password-reset-complete')
 
 
 class CustomPasswordResetCompleteView(PasswordResetCompleteView):
-    template_name = "auth/password_reset_complete.html"
+    template_name = "account/auth/password_reset_complete.html"

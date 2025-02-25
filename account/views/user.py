@@ -26,7 +26,7 @@ def user_login(request):
                 messages.error(request, "Invalid email or password")
     else:
         form = LoginForm()
-    return render(request, 'registration/login.html', {'form': form})
+    return render(request, 'account/registration/login.html', {'form': form})
 
 
 def register(request):
@@ -57,7 +57,7 @@ def register(request):
         form = RegistrationForm()
     return render(
         request,
-        'registration/register.html', {'form': form}
+        'account/registration/register.html', {'form': form}
     )
 
 
