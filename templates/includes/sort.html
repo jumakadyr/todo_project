@@ -1,0 +1,8 @@
+<form method="get" id="filter-form">
+    <select name="sort">
+        <option value="-created_at" {% if selected_sort == "-updated_at" %}selected{% endif %}>Новые</option>
+        <option value="-created_at" {% if selected_sort == "-updated_at" %}selected{% endif %}>Старые</option>
+    </select>
+    <button type="submit">Сортировка</button>
+
+</form>

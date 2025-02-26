@@ -8,29 +8,31 @@
     <link rel="stylesheet" href="{% static 'css/styles.css' %}">
 </head>
 <body>
-    <header>
-        <nav>
-            <ul>
-                <li><a href="{% url 'home' %}">Главная</a></li>
-                <li><a href="{% url 'blog:category-list' %}">Категории</a></li>
-                {% if user.is_authenticated %}
-                    <li><a href="#">Профиль</a></li>
-                    <li><a href="#">Закладки</a></li>
-                    <li><a href="{% url 'account:logout' %}">Выйти</a></li>
-                {% else %}
-                    <li><a href="{% url 'account:login' %}">Войти</a></li>
-                {% endif %}
-            </ul>
-        </nav>
-    </header>
+<header>
+    <nav>
+        <ul>
+            {% if user.is_authenticated %}
+            <li><a href="{% url 'home' %}">Главная</a></li>
+            <li><a href="{% url 'blog:category-list' %}">Категории</a></li>
+            <li><a href="{% url 'account:profile' %}">Профиль</a></li>
 
-    <main>
-        {% block content %}
-        {% endblock %}
-    </main>
+            <li><a href="#">Закладки</a></li>
 
-    <footer>
-        <p>© 2023 Мой Блог. Все права защищены.</p>
-    </footer>
+            <li><a href="{% url 'account:logout' %}">Выйти</a></li>
+            {% else %}
+            <li><a href="{% url 'account:login' %}">Войти</a></li>
+            {% endif %}
+        </ul>
+    </nav>
+</header>
+
+<main>
+    {% block content %}
+    {% endblock %}
+</main>
+
+<footer>
+    <p>© 2023 Мой Блог. Все права защищены.</p>
+</footer>
 </body>
 </html>

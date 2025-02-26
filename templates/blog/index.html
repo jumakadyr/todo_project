@@ -1,6 +1,17 @@
 {% extends 'base.html' %}
+
 {% block title %} Главная - Мой Блог {% endblock title %}
+
 {% block content %}
+
+{% include 'includes/search.html' %}
+{% include 'includes/sort.html' %}
+
+<form method="get">
+    <button type="submit">Сбросить</button>
+</form>
+
+
 <section class='latest-posts'>
     <h2>Последние статьи</h2>
     {% for post in posts %}
