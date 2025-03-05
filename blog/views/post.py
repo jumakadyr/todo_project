@@ -1,3 +1,5 @@
+import os
+
 from django.shortcuts import render, get_object_or_404,redirect
 from django.contrib.auth.decorators import login_required
 
@@ -36,7 +38,7 @@ def post_create(request):
             post.owner = request.user
             post.save()
             form.save_m2m()
-            return redirect('post_detail',pk=post.pk)
+            return redirect('blog:post-detail',pk=post.pk)
     else:
         form = CreatePostForm()
     return render(request,'blog/post_create.html',{'form':form})

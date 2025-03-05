@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block title %}Мои Закладки{% endblock title %}
+{% block content %}
+<h2>Мои закладки</h2>
+{% if bookmarks %}
+<ul>
+    {% for post in bookmarks %}
+    <li>
+        <a href="{% url 'blog:post-detail' post.pk %}">{{ post.title }}</a>
+        <p>{{ post.description }}</p>
+
+        <a style="color: red" href="{% url 'blog:bookmark-delete' post.id %}">Удалить</a>
+        <br>
+        <br>
+    </li>
+    {% endfor %}
+</ul>
+{% else %}
+<p>У вас есть статьи в избранном</p>
+{% endif %}
+{% endblock content %}

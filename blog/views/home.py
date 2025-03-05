@@ -4,7 +4,7 @@ from django.db.models import Q
 from blog.forms import Post, Category
 
 @login_required
-def     home(request):
+def home(request):
     query = request.GET.get('q', '')
     sort_by = request.GET.get('sort', '-updated_at')
 

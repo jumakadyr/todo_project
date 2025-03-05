@@ -19,7 +19,9 @@ urlpatterns = [
     path('coments/<int:pk>/delete',comment.delete_comment, name='delete-comment'),
 
     path('posts/<int:pk>/like',like_dislike.toggle_like, name='toggle-like'),
-    path('posts/<int:pk>/dislike',like_dislike.toggle_dislike, name='toggle_dislike'),
-    path('posts/<int:pk>/bookmark', bookmark.toggle_bookmark, name='toggle_bookmark'),
+    path('posts/<int:pk>/dislike',like_dislike.toggle_dislike, name='toggle-dislike'),
+    path('bookmark/', bookmark.bookmark_list, name='bookmark-list'),
+    path('bookmarks/<int:pk>/delete', bookmark.bookmark_delete, name='bookmark-delete'),
+    path('posts/<int:pk>/bookmark', bookmark.toggle_bookmark, name='toggle-bookmark'),
 
 ]
