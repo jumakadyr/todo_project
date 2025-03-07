@@ -36,7 +36,7 @@ class Migration(migrations.Migration):
                 ('created_at', models.DateTimeField(auto_now_add=True, verbose_name='Дата создания')),
                 ('updated_at', models.DateTimeField(auto_now=True, verbose_name='Дата обновления')),
                 ('bookmarks', models.ManyToManyField(blank=True, related_name='bookmarks', to=settings.AUTH_USER_MODEL, verbose_name='Закладки')),
-                ('category', models.ManyToManyField(related_name='posts', to='blog.category', verbose_name='Категории')),
+                ('category', models.ManyToManyField(related_name='posts', to='tasks.category', verbose_name='Категории')),
                 ('dislikes', models.ManyToManyField(blank=True, related_name='dislikes', to=settings.AUTH_USER_MODEL, verbose_name='Не нравится')),
                 ('likes', models.ManyToManyField(blank=True, related_name='likes', to=settings.AUTH_USER_MODEL, verbose_name='Нравится')),
                 ('owner', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='posts', to=settings.AUTH_USER_MODEL, verbose_name='Автор')),
@@ -54,7 +54,7 @@ class Migration(migrations.Migration):
                 ('content', models.TextField(max_length=200, verbose_name='Текст комментарий')),
                 ('created_at', models.DateTimeField(auto_now_add=True, verbose_name='Дата создания')),
                 ('owner', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='comments', to=settings.AUTH_USER_MODEL, verbose_name='Автор комментарий')),
-                ('post', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='comments', to='blog.post', verbose_name='Статья')),
+                ('post', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='comments', to='tasks.post', verbose_name='Статья')),
             ],
             options={
                 'verbose_name': 'Комментарий',

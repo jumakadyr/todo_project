@@ -5,7 +5,7 @@
 {% block content %}
     <div class="profile-container">
         <div class="profile-header">
-            <h1>Профиль пользователя: {{ user.last_name }} {{ user.first_name }}</h1>
+            <h1>Профиль пользователя: {{ user.first_name }} {{ user.last_name }}</h1>
             <p>Email: {{ user.email }}</p>
             <p>Возраст: {{ user.age }}</p>
             <p>Дата регистрации: {{ user.created_at|date:"d M Y" }}</p>
@@ -19,7 +19,7 @@
                 <ul>
                     {% for post in user.posts.all %}
                         <li>
-                            <a href="{% url 'blog:post-detail' post.id %}">{{ post.title }}</a>
+                            <a href="{% url 'tasks:post-detail' post.id %}">{{ post.title }}</a>
                             <span class="post-date">{{ post.created_at|date:"d M Y" }}</span>
                         </li>
                     {% endfor %}
@@ -35,7 +35,7 @@
                 <ul>
                     {% for post in user.bookmarks.all %}
                         <li>
-                            <a href="{% url 'blog:post-detail' post.id %}">{{ post.title }}</a>
+                            <a href="{% url 'tasks:post-detail' post.id %}">{{ post.title }}</a>
                             <span class="post-date">{{ post.created_at|date:"d M Y" }}</span>
                         </li>
                     {% endfor %}
@@ -51,7 +51,7 @@
                 <ul>
                     {% for post in user.likes.all %}
                         <li>
-                            <a href="{% url 'blog:post-detail' post.id %}">{{ post.title }}</a>
+                            <a href="{% url 'tasks:post-detail' post.id %}">{{ post.title }}</a>
                             <span class="post-date">{{ post.created_at|date:"d M Y" }}</span>
                         </li>
                     {% endfor %}

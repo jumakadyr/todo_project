@@ -12,17 +12,16 @@
     <nav>
         <ul>
             {% if user.is_authenticated %}
-            <li><a href="{% url 'home' %}">Главная</a></li>
-            <li><a href="{% url 'blog:category-list' %}">Категории</a></li>
-            <li><a href="{% url 'blog:post-create' %}">Создать пост</a></li>
+            <li><a href="{% url 'home' %}" class="btn">Главная</a></li>
+            <li><a href="{% url 'tasks:task-create' %}" class="btn">Добавить задачу</a></li>
 
+            <li><a href="{% url 'tasks:profile' %}" class="btn">Профиль</a></li>
 
-            <li><a href="{% url 'account:profile' %}">Профиль</a></li>
-            <li><a href="{% url 'blog:bookmark-list' %}">Закладки</a></li>
-
-            <li><a href="{% url 'account:logout' %}">Выйти</a></li>
+            <li><a href="{% url 'account:logout' %}" class="btn">Выйти</a></li>
             {% else %}
-            <li><a href="{% url 'account:login' %}">Войти</a></li>
+            <li><a href="{% url 'account:login' %}" class="btn">Войти</a></li>
+
+            <li><a href="{% url 'account:register' %}" class="btn">Регистрация</a></li>
             {% endif %}
         </ul>
     </nav>
@@ -34,7 +33,7 @@
 </main>
 
 <footer>
-    <p>© 2023 Мой Блог. Все права защищены.</p>
+    <p>© 2025 Мой Блог. Все права защищены.</p>
 </footer>
 </body>
 </html>
