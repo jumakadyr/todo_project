@@ -1,20 +1,14 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<div class="main">
+<div>
 
     <h2 class="h2">Мои задачи</h2>
     <form action="{% url 'tasks:task-create' %}" method="get" style="display:inline;">
 
         <button type="submit" class="btn btn-success">Добавить задачу</button>
     </form>
-    <style>
-        .main{
-            display: flex;
-        }
-        .h2{
 
-        }
     </style>
     {% if tasks %}
     <table class="task-table">
@@ -69,4 +63,4 @@
     <p>Нет задач.</p>
     {% endif %}
 </div>
-    {% endblock content %}
+{% endblock %}
