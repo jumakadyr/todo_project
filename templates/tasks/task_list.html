@@ -1,50 +1,72 @@
 {% extends 'base.html' %}
 
 {% block content %}
+<div class="main">
 
-<form action="{% url 'tasks:task-create' %}" method="get" style="display:inline;">
-    <h2>Мои задачи</h2>
+    <h2 class="h2">Мои задачи</h2>
+    <form action="{% url 'tasks:task-create' %}" method="get" style="display:inline;">
 
-    <button type="submit" class="btn btn-success">Добавить задачу</button>
-</form>
+        <button type="submit" class="btn btn-success">Добавить задачу</button>
+    </form>
+    <style>
+        .main{
+            display: flex;
+        }
+        .h2{
 
-{% if tasks %}
-<table class="task-table">
-    <thead>
-    <tr>
+        }
+    </style>
+    {% if tasks %}
+    <table class="task-table">
+        <thead>
+        <tr>
 
-        <th>Название</th>
-        <th>Приоритет</th>
-        <th>Дедлайн</th>
-        <th>Статус</th>
-        <th>Дата создания</th>
-        <th colspan="2">Действия</th>
-    </tr>
-    </thead>
-    <tbody>
-    {% for task in tasks %}
-    <tr>
-        <td>{{ task.title }}</td>
-        <td>{{ task.priority }}</td>
-        <td>{{ task.deadline|date:'d.M.Y' }}</td>
-        <td>{{ task.status }}</td>
-        <td>{{ task.created_at|date:'d.M.Y' }}</td>
-        <td>
-            <form action="{% url 'tasks:task-edit' task.pk %}" method="get" style="display:inline;">
-                <button type="submit" class="btn btn-warning">Редактировать</button>
+            <th>Название</th>
+            <th>Приоритет</th>
+            <th>Дедлайн</th>
+            <th>Статус</th>
+            <th>Дата создания</th>
+            <th colspan='2'>Действия</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for task in tasks %}
+        <div class="task">
+            <h3>{{ task.title }}</h3>
+            <p>Статус: {{ task.get_status_display }}</p>
+
+            {% if task.status != "Done" %}
+            <form action="{% url 'tasks:task-complete' %}" method="post"> {% csrf_token %}
+                <button type="submit" class="btn btn-success">Завершить</button>
             </form>
-        </td>
-        <td>
-            <form action="{% url 'tasks:task-delete' task.pk %}" method="post" style="display:inline;">
-                {% csrf_token %}
-                <button type="submit" class="btn btn-danger">Удалить</button>
-            </form>
-        </td>
-    </tr>
-    {% endfor %}
-    </tbody>
-</table>
-{% else %}
-<p>Нет задач.</p>
-{% endif %}
-{% endblock content %}
+            {% endif %}
+        </div>
+        {% endfor %}
+
+        {% for task in tasks %}
+        <tr>
+            <td>{{ task.title }}</td>
+            <td>{{ task.priority }}</td>
+            <td>{{ task.deadline|date:'d.M.Y' }}</td>
+            <td>{{ task.status }}</td>
+            <td>{{ task.created_at|date:'d.M.Y' }}</td>
+            <td>
+                <form action="{% url 'tasks:task-edit' task.pk %}" method="get" style="display:inline;">
+                    <button type="submit" class="btn btn-warning">Редактировать</button>
+                </form>
+            </td>
+            <td>
+                <form action="{% url 'tasks:task-delete' task.pk %}" method="post" style="display:inline;">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-danger">Удалить</button>
+                </form>
+            </td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    {% else %}
+    <p>Нет задач.</p>
+    {% endif %}
+</div>
+    {% endblock content %}

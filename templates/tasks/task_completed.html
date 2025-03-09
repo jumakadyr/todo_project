@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+
+{% block title %}Завершение задачи{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <h2>Задача завершена!</h2>
+        <p>Задача "{{ task.title }}" успешно завершена.</p>
+        <a href="{% url 'tasks:task-list' %}" class="btn">Вернуться к списку задач</a>
+    </div>
+{% endblock %}

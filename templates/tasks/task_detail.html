@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block title %}{{ task.title }}{% endblock %}
+
+{% block content %}
+    <h2>{{ task.title }}</h2>
+    <p>{{ task.description }}</p>
+    <p>Статус: {{ task.get_status_display }}</p>
+
+    {% if task.status != "Done" %}
+        <form action="{% url 'tasks:task-complete' task.id %}" method="post">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-success">Завершить</button>
+        </form>
+    {% else %}
+        <p class="completed">Эта задача уже завершена.</p>
+    {% endif %}
+
+    <a href="{% url 'tasks:task-list' %}" class="btn">Назад</a>
+{% endblock %}

@@ -14,6 +14,7 @@
             {% if user.is_authenticated %}
                 <li><a href="{% url 'home' %}" class="btn">Главная</a></li>
                 <li><a href="{% url 'tasks:task-create' %}" class="btn">Добавить задачу</a></li>
+                <li><a href="{% url 'tasks:task-complete' %}" class="btn">Завершенные</a></li>
                 <li><a href="{% url 'tasks:profile' %}" class="btn">Профиль</a></li>
                 <li><a href="{% url 'account:logout' %}" class="btn">Выйти</a></li>
             {% else %}

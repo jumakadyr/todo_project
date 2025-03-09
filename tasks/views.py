@@ -47,6 +47,10 @@ def task_delete(request,pk):
     task.delete()
     return redirect('tasks:task-list')
 
+@login_required
+def task_complete(request):
+    tasks = Task.objects.filter(status="Done", owner=request.user)
+    return render(request, "tasks/task_completed.html", {"tasks": tasks})
 
 
 @login_required()
