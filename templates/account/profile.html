@@ -1,64 +1,125 @@
 {% extends 'base.html' %}
 
-{% block title %}Профиль - {{ user.first_name }} {{ user.last_name }}{% endblock %}
+{% block title %}Профиль {{ user.first_name }} {{ user.last_name }} {% endblock %}
 
 {% block content %}
-    <div class="profile-container">
-        <div class="profile-header">
-            <h1>Профиль пользователя: {{ user.first_name }} {{ user.last_name }}</h1>
-            <p>Email: {{ user.email }}</p>
-            <p>Возраст: {{ user.age }}</p>
-            <p>Дата регистрации: {{ user.created_at|date:"d M Y" }}</p>
-            <a href="{% url 'account:password-change' %}" class="profile-btn">Изменить пароль</a>
-            <a href="{% url 'account:profile-edit' %}" class="profile-btn">Редактировать профиль</a>
-        </div>
+<style>
+    .profile-container {
+        max-width: 800px;
+        margin: 20px auto;
+        padding: 20px;
+        background: lightgrey;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        color: black;
+    }
 
-        <div class="profile-posts">
-            <h2>Мои статьи</h2>
-            {% if user.posts.all %}
-                <ul>
-                    {% for post in user.posts.all %}
-                        <li>
-                            <a href="{% url 'tasks:post-detail' post.id %}">{{ post.title }}</a>
-                            <span class="post-date">{{ post.created_at|date:"d M Y" }}</span>
-                        </li>
-                    {% endfor %}
-                </ul>
-            {% else %}
-                <p>У вас пока нет статей.</p>
-            {% endif %}
-        </div>
+    .profile-header {
+        text-align: center;
+        margin-bottom: 20px;
+    }
 
-        <div class="profile-bookmarks">
-            <h2>Закладки</h2>
-            {% if user.bookmarks.all %}
-                <ul>
-                    {% for post in user.bookmarks.all %}
-                        <li>
-                            <a href="{% url 'tasks:post-detail' post.id %}">{{ post.title }}</a>
-                            <span class="post-date">{{ post.created_at|date:"d M Y" }}</span>
-                        </li>
-                    {% endfor %}
-                </ul>
-            {% else %}
-                <p>У вас пока нет закладок.</p>
-            {% endif %}
-        </div>
+    .profile-header h1,
+    .profile-header p,
+    .profile-section h2,
+    ul li,
+    .post-date {
+        color: black;
+    }
 
-        <div class="profile-likes">
-            <h2>Понравившиеся статьи</h2>
-            {% if user.likes.all %}
-                <ul>
-                    {% for post in user.likes.all %}
-                        <li>
-                            <a href="{% url 'tasks:post-detail' post.id %}">{{ post.title }}</a>
-                            <span class="post-date">{{ post.created_at|date:"d M Y" }}</span>
-                        </li>
-                    {% endfor %}
-                </ul>
-            {% else %}
-                <p>У вас пока нет понравившихся статей.</p>
-            {% endif %}
-        </div>
+    .profile-btn {
+        display: inline-block;
+        margin: 10px 5px;
+        padding: 8px 16px;
+        background: #e76f51;
+        color: white;
+        text-decoration: none;
+        border-radius: 5px;
+    }
+
+    .profile-btn:hover {
+        background: #ff6347;
+    }
+
+    .profile-section {
+        margin-top: 20px;
+    }
+
+    .profile-section h2 {
+        font-size: 20px;
+        border-bottom: 2px solid #ff6347;
+        padding-bottom: 5px;
+        margin-bottom: 10px;
+    }
+
+    ul {
+        list-style: none;
+        padding: 0;
+    }
+
+
+    .post-date {
+        font-size: 14px;
+        color: black;
+    }
+</style>
+
+<div class="profile-container">
+    <div class="profile-header">
+        <h1>Профиль пользователя: {{ user.first_name }} {{ user.last_name }}</h1>
+        <p>Email: {{ user.email }}</p>
+        <p>Возраст: {{ user.age }}</p>
+        <p>Дата регистрации: {{ user.created_at|date:"d M Y" }}</p>
+        <a href="{% url 'account:password-change' %}" class="profile-btn">Изменить пароль</a>
+        <a href="{% url 'account:profile-edit' %}" class="profile-btn">Редактировать профиль</a>
     </div>
+
+    <div class="profile-section">
+        <h2>Мои статьи</h2>
+        {% if user.posts.all %}
+        <ul>
+            {% for post in user.posts.all %}
+            <li>
+                <a href="{% url 'tasks:post-detail' post.id %}">{{ post.title }}</a>
+                <span class="post-date">{{ post.created_at|date:"d M Y" }}</span>
+            </li>
+            {% endfor %}
+        </ul>
+        {% else %}
+        <p>У вас пока нет статей.</p>
+        {% endif %}
+    </div>
+
+    <div class="profile-section">
+        <h2>Закладки</h2>
+        {% if user.bookmarks.all %}
+        <ul>
+            {% for post in user.bookmarks.all %}
+            <li>
+                <a href="{% url 'tasks:post-detail' post.id %}">{{ post.title }}</a>
+                <span class="post-date">{{ post.created_at|date:"d M Y" }}</span>
+            </li>
+            {% endfor %}
+        </ul>
+        {% else %}
+        <p>У вас пока нет закладок.</p>
+        {% endif %}
+    </div>
+
+    <div class="profile-section">
+        <h2>Понравившиеся статьи</h2>
+        {% if user.likes.all %}
+        <ul>
+            {% for post in user.likes.all %}
+            <li>
+                <a href="{% url 'tasks:post-detail' post.id %}">{{ post.title }}</a>
+                <span class="post-date">{{ post.created_at|date:"d M Y" }}</span>
+            </li>
+            {% endfor %}
+        </ul>
+        {% else %}
+        <p>У вас пока нет понравившихся статей.</p>
+        {% endif %}
+    </div>
+</div>
 {% endblock %}

@@ -1,43 +1,74 @@
 {% extends 'base.html' %}
-{% block title %} Главная {% endblock title %}
+{% block content %}
+<div class="center-container">
+    {% include 'includes/search.html' %}
+    <h2  class="my-h2">Мои задачи</h2>
 
-{% block content%}
-{% include 'includes/search.html' %}
-<h2>Мои задачи</h2>
 
-<a href="{% url 'tasks:task-create' %}" class="btn">Добавить задачу</a>
 
-{% if tasks %}
-<table class="task-table">
-    <thead>
-    <tr>
-        <th>Название</th>
-        <th>Описание</th>
-        <th>Приоритет</th>
-        <th>Дедлайн</th>
-        <th>Статус</th>
-        <th>Дата создания</th>
-        <th>Действия</th>
-    </tr>
-    </thead>
-    <tbody>
-    {% for task in tasks %}
+    <a href="{% url 'tasks:task-create' %}" class="btn">Добавить задачу</a>
 
-    <tr>
-        <td>{{ task.title }}</td>
-        <td>{{ task.description }}</td>
-        <td>{{ task.priority }}</td>
-        <td>{{ task.deadline|date:'d.M.Y' }}</td>
-        <td>{{ task.status }}</td>
-        <td>{{ task.created_at|date:'d.M.Y' }}</td>
-        <td><a href="{% url 'tasks:task-edit' task.pk %}" class="btn btn-primary">Редактировать</a><br>---<br>
-            <a href="{% url 'tasks:task-delete' task.pk %}" class="btn btn-primary">Удалить</a></td>
+    {% if tasks %}
+    <table class="task-table">
+        <thead>
+            <tr class="box">
+                <th>Название</th>
+                <th>Описание</th>
+                <th>Приоритет</th>
+                <th>Дедлайн</th>
+                <th>Статус</th>
+                <th>Дата создания</th>
+                <th>Действия</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for task in tasks %}
+            <tr>
+                <td>{{ task.title }}</td>
+                <td>{{ task.description }}</td>
+                <td>{{ task.priority }}</td>
+                <td>{{ task.deadline|date:'d.M.Y' }}</td>
+                <td>{{ task.status }}</td>
+                <td>{{ task.created_at|date:'d.M.Y' }}</td>
+                <td>
+                    <a href="{% url 'tasks:task-edit' task.pk %}" class="btn btn-primary">Редактировать</a><br><br>
+                    <a href="{% url 'tasks:task-delete' task.pk %}" class="btn btn-primary">Удалить</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% else %}
+    <p>Нет задач.</p>
+    {% endif %}
 
-    </tr>
-    {% endfor %}
-    </tbody>
-</table>
-{% else %}
-<p>Нет задач.</p>
-{% endif %}
-{% endblock content%}
+    <style>
+        .my-h2{
+            text-align: center;
+            font-weight: bold;
+            font-size: 50px ;
+        }
+
+        td{
+            display: inline-block;
+            width: 150px;
+        }
+
+        .box{
+            display: flex;
+
+        }
+        .task-table{
+            padding: 50px;
+            box-shadow: 0 2px 4px #d35400   ;
+            text-align: left;
+        }
+        th{
+            width: 150px;
+
+        }
+
+    </style>
+
+</div>
+{% endblock content %}

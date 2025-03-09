@@ -12,28 +12,24 @@
     <nav>
         <ul>
             {% if user.is_authenticated %}
-            <li><a href="{% url 'home' %}" class="btn">Главная</a></li>
-            <li><a href="{% url 'tasks:task-create' %}" class="btn">Добавить задачу</a></li>
-
-            <li><a href="{% url 'tasks:profile' %}" class="btn">Профиль</a></li>
-
-            <li><a href="{% url 'account:logout' %}" class="btn">Выйти</a></li>
+                <li><a href="{% url 'home' %}" class="btn">Главная</a></li>
+                <li><a href="{% url 'tasks:task-create' %}" class="btn">Добавить задачу</a></li>
+                <li><a href="{% url 'tasks:profile' %}" class="btn">Профиль</a></li>
+                <li><a href="{% url 'account:logout' %}" class="btn">Выйти</a></li>
             {% else %}
-            <li><a href="{% url 'account:login' %}" class="btn">Войти</a></li>
-
-            <li><a href="{% url 'account:register' %}" class="btn">Регистрация</a></li>
+                <li><a href="{% url 'account:login' %}" class="btn">Войти</a></li>
+                <li><a href="{% url 'account:register' %}" class="btn">Регистрация</a></li>
             {% endif %}
         </ul>
     </nav>
 </header>
 
 <main>
-    {% block content %}
-    {% endblock %}
+    {% block content %}{% endblock %}
 </main>
 
 <footer>
-    <p>© 2025 Мой Блог. Все права защищены.</p>
+    <p>&copy; 2025 Мой Блог. Все права защищены.</p>
 </footer>
 </body>
 </html>

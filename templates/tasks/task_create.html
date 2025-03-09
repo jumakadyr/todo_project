@@ -1,16 +1,22 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <h2>Добавить новую задачу</h2>
+
+   <h2 class="moi">Добавить новую задачу</h2>
 
     {% if form.errors %}
         <p style="color: red;">Пожалуйста, исправьте ошибки ниже.</p>
     {% endif %}
-
+<div>
     <form method="post">
         {% csrf_token %}
-        {{ form.as_p }}  <!-- Render form fields as paragraphs -->
+        {{ form.as_p }}
+        <div class="btns">
         <button type="submit" class="btn">Сохранить</button>
+            <a href="{% url 'tasks:task-list' %}" class="btn">Назад</a>
+        </div>
+
     </form>
-    <a href="{% url 'tasks:task-list' %}" class="btn">Назад</a>
+</div>
+
 {% endblock %}

@@ -4,28 +4,17 @@ body {
     margin: 0;
     padding: 0;
     background-color: rgba(0, 0, 0, 0.6);
-    color: #ecf0f1;
+    color: #ffffff;
     line-height: 1.6;
-    overflow: hidden;
     height: 100vh;
     display: flex;
     flex-direction: column;
 }
 
-/* Эффект дождя */
-@keyframes rainEffect {
-    0% { background-position: 0% 0%; }
-    100% { background-position: 100% 100%; }
-}
-
-body {
-    animation: rainEffect 30s linear infinite;
-}
-
 /* Шапка */
 header {
     background-color: rgba(34, 34, 34, 0.8);
-    color: #fff;
+    color: #ffffff;
     padding: 20px;
     text-align: center;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
@@ -34,22 +23,26 @@ header {
     z-index: 10;
 }
 
-header h1 {
-    font-size: 3rem;
-    text-transform: uppercase;
-    letter-spacing: 3px;
-    color: #ecf0f1;
-    font-weight: 700;
+nav ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
 }
 
-/* Кнопки с эффектом тепла */
+nav ul li {
+    display: inline;
+}
+
+/* Кнопки */
 .btn {
     display: inline-block;
     padding: 12px 25px;
     font-size: 16px;
     border-radius: 50px;
     text-decoration: none;
-    background-color: #ff6347; /* Теплый оранжевый оттенок */
+    background-color: #ff6347;
     color: white;
     text-align: center;
     transition: transform 0.3s, box-shadow 0.3s ease;
@@ -57,14 +50,71 @@ header h1 {
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
 
+.btn:hover {
+    background-color: #e76f51;
+    transform: scale(1.05);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.3);
+}
+
+.btn:active {
+    transform: translateY(2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* Основное содержимое */
+main {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+/* Подвал */
+footer {
+    background-color: rgba(34, 34, 34, 0.8);
+    text-align: center;
+    padding: 15px;
+    color: #ecf0f1;
+    font-size: 14px;
+}
+
+/* Базовый стиль кнопок */
+.btn {
+    display: inline-block;
+    padding: 12px 25px;
+    font-size: 16px;
+    border-radius: 50px;
+    text-decoration: none;
+        background-color: #ff6347; /* Теплый оранжевый */
+    color: white;
+    text-align: center;
+    font-weight: 600;
+    transition: transform 0.2s, box-shadow 0.2s ease, background-color 0.2s ease;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2), 0 0 20px rgba(0, 0, 0, 0.3);
+    position: relative;
+    z-index: 2;
+}
+
+/* Эффект при наведении */
+.btn:hover {
+    transform: translateY(-3px); /* Подъем */
+    box-shadow: 0 15px 25px rgba(0, 0, 0, 0.3), 0 0 30px orange;
+}
+
+/* Эффект при нажатии */
+.btn:active {
+    transform: translateY(2px); /* Вдавливание */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2), 0 0 15px rgba(0, 0, 0, 0.3);
+}
+
+/* Варианты кнопок */
 .btn-primary {
-    background-color: #ff6f61; /* Светлый оранжевый оттенок */
+    background-color: #ff6f61;
 }
 
 .btn-primary:hover {
-    background-color: #e76f51; /* Более теплый оттенок */
-    transform: scale(1.05);
-    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.3);
+    background-color: #e76f51;
 }
 
 .btn-danger {
@@ -73,16 +123,36 @@ header h1 {
 
 .btn-danger:hover {
     background-color: #e74c3c;
-    transform: scale(1.05);
-    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.3);
 }
 
-/* Таблица задач */
+/* Фокусировка */
+.btn:focus {
+    outline: none;
+    box-shadow: 0 0 10px rgba(255, 99, 71, 0.8);
+}
+
+.moi{
+    margin-bottom: 450px;
+    margin-right: -285px;
+}
+
+.btns{
+    margin-top: 50px;
+    /*margin: auto;*/
+    width: 100%;
+    /*border: 1px solid red;*/
+    display: flex;
+    .btn{
+        margin-right: 30px;
+    }
+}
+
+/* Стили для таблицы задач */
 .task-table {
     width: 100%;
     border-collapse: collapse;
     margin-top: 20px;
-    background: rgba(0, 0, 0, 0.5);
+    background: rgba(255, 255, 255, 0.1);
     border-radius: 10px;
     overflow: hidden;
 }
@@ -91,143 +161,57 @@ header h1 {
     padding: 12px;
     text-align: left;
     border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-    font-size: 1rem;
 }
 
 .task-table th {
-    background: rgba(255, 255, 255, 0.1);
-    color: #f39c12;
-    text-transform: uppercase;
+    background: rgba(255, 99, 71, 0.7);
+    color: white;
+    font-weight: bold;
 }
 
-.task-table tr:hover {
+.task-table tbody tr:nth-child(odd) {
     background: rgba(255, 255, 255, 0.05);
 }
 
-@media (max-width: 768px) {
-    .task-table, .task-table thead, .task-table tbody, .task-table th, .task-table td, .task-table tr {
-        display: block;
-    }
-
-    .task-table tr {
-        margin-bottom: 15px;
-        border-radius: 10px;
-        padding: 10px;
-        background: rgba(0, 0, 0, 0.3);
-    }
-
-    .task-table td {
-        text-align: right;
-        position: relative;
-        padding-left: 50%;
-    }
-
-    .task-table td::before {
-        content: attr(data-label);
-        position: absolute;
-        left: 10px;
-        font-weight: bold;
-        text-transform: uppercase;
-        color: #fff;
-    }
+.task-table tbody tr:hover {
+    background: rgba(255, 255, 255, 0.2);
 }
 
-/* Эффект дождя на фоне */
-.rain-effect {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: url('https://cdn.pixabay.com/photo/2018/05/01/16/34/rain-3364570_960_720.jpg') repeat;
-    z-index: 1;
-    pointer-events: none;
-    opacity: 0.2;
-    animation: fallingRain 0.5s linear infinite;
-}
-
-@keyframes fallingRain {
-    0% {
-        background-position: 0 0;
-    }
-    100% {
-        background-position: 0 100%;
-    }
-}
-
-/* Текстовые элементы */
-h1, p {
-    font-family: 'Georgia', serif;
-    font-size: 1.2em;
-    color: rgba(255, 255, 255, 0.85);
-    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5); /* Мягкий эффект свечения */
-    margin-bottom: 20px;
-}
-
-/* Плавные анимации текста */
-@keyframes textAnim {
-    0% {
-        opacity: 0;
-        transform: translateY(10px);
-    }
-    100% {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-h1, p {
-    animation: textAnim 1s ease-out forwards;
-}
-
-/* Кнопки с эффектом тепла и 3D */
-.btn {
-    display: inline-block;
-    padding: 12px 25px;
-    font-size: 16px;
-    border-radius: 50px;
+/* Стили для кнопок в таблице */
+.task-table .btn {
+    padding: 8px 15px;
+    font-size: 14px;
+    border-radius: 8px;
     text-decoration: none;
-    background-color: #ff6347; /* Теплый оранжевый оттенок */
-    color: white;
     text-align: center;
-    transition: transform 0.2s, box-shadow 0.2s ease, background-color 0.2s ease;
+    transition: transform 0.2s, box-shadow 0.2s ease;
     font-weight: 600;
-    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2), 0 0 20px rgba(0, 0, 0, 0.3);
-    position: relative;
-    z-index: 2;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
 
-.btn-primary {
-    background-color: #ff6f61; /* Светлый оранжевый оттенок */
+.task-table .btn-warning {
+    background-color: #e67e22;
+    color: white;
 }
 
-.btn-primary:hover {
-    background-color: #e76f51; /* Более теплый оттенок */
-    transform: translateY(-4px); /* Эффект подъема */
-    box-shadow: 0 15px 25px rgba(0, 0, 0, 0.3), 0 0 30px rgba(0, 0, 0, 0.4);
+.task-table .btn-warning:hover {
+    background-color: #d35400;
 }
 
-.btn-primary:active {
-    transform: translateY(2px); /* Эффект вдавливания */
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2), 0 0 15px rgba(0, 0, 0, 0.3);
-}
-
-.btn-danger {
+.task-table .btn-danger {
     background-color: #c0392b;
+    color: white;
 }
 
-.btn-danger:hover {
+.task-table .btn-danger:hover {
     background-color: #e74c3c;
-    transform: translateY(-4px); /* Эффект подъема */
-    box-shadow: 0 15px 25px rgba(0, 0, 0, 0.3), 0 0 30px rgba(0, 0, 0, 0.4);
 }
 
-.btn-danger:active {
-    transform: translateY(2px); /* Эффект вдавливания */
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2), 0 0 15px rgba(0, 0, 0, 0.3);
+/* Стили для блока "Нет задач" */
+.no-tasks {
+    text-align: center;
+    font-size: 18px;
+    color: #ffffff;
+    margin-top: 20px;
 }
 
-.btn:focus {
-    outline: none;
-    box-shadow: 0 0 10px rgba(255, 99, 71, 0.8);
-}

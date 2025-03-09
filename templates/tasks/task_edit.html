@@ -1,11 +1,18 @@
 {% extends 'base.html' %}
-{% block title %} Редактировать задачу {% endblock title %}
+
+{% block title %}Редактирование задачи{% endblock title %}
+
 {% block content %}
-<h2>Редактировать задачу "{{task.title}}"</h2>
-<form method="post">
-  {% csrf_token %}
-  {{form.as_p}}
-  <button type="submit" class="btn">Сохранить</button>
-</form>
-<a href="{% url 'tasks:task-list' %}" class="btn">Назад</a>
+    <form method="post" class="task-form">
+    <h2>Редактирование задачи: "{{ task.title }}"</h2>
+
+
+        {% csrf_token %}
+        {{ form.as_p }}
+        <div class="form-actions">
+
+            <button type="submit" class="btn">Сохранить</button>
+            <a href="{% url 'tasks:task-list' %}" class="btn">Отмена</a>
+        </div>
+    </form>
 {% endblock content %}
