@@ -9,6 +9,7 @@ class Task(models.Model):
         ("In Review", 'На Проверке'),
         ("Done", 'Выполнено'),
     ]
+    status = models.CharField(max_length=20, choices=STATUS_CHOICES, default="todo")
 
     PRIORITY_CHOICES = [
         ('Low','Низкий'),

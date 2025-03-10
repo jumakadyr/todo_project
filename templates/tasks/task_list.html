@@ -1,15 +1,23 @@
 {% extends 'base.html' %}
-
 {% block content %}
+
 <div>
 
-    <h2 class="h2">Мои задачи</h2>
+    <h2 class="h2" style="font-size: 60px; margin-left: 270px">Мои задачи</h2>
+  <div style="display: flex; justify-content: space-between; align-items: center;">
     <form action="{% url 'tasks:task-create' %}" method="get" style="display:inline;">
-
         <button type="submit" class="btn btn-success">Добавить задачу</button>
     </form>
 
-    </style>
+    {% if task.status != "Done" %}
+    <form action="{% url 'tasks:task-complete' %}" method="post" style="display:inline;">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-success">Завершить</button>
+    </form>
+    {% endif %}
+</div>
+
+
     {% if tasks %}
     <table class="task-table">
         <thead>
@@ -25,27 +33,18 @@
         </thead>
         <tbody>
         {% for task in tasks %}
-        <div class="task">
-            <h3>{{ task.title }}</h3>
-            <p>Статус: {{ task.get_status_display }}</p>
-
-            {% if task.status != "Done" %}
-            <form action="{% url 'tasks:task-complete' %}" method="post"> {% csrf_token %}
-                <button type="submit" class="btn btn-success">Завершить</button>
-            </form>
-            {% endif %}
-        </div>
-        {% endfor %}
-
-        {% for task in tasks %}
         <tr>
             <td>{{ task.title }}</td>
             <td>{{ task.priority }}</td>
             <td>{{ task.deadline|date:'d.M.Y' }}</td>
-            <td>{{ task.status }}</td>
+            <td>
+                <strong>Статус:</strong>
+                <p>{{ task.get_status_display }}</p>
+            </td>
             <td>{{ task.created_at|date:'d.M.Y' }}</td>
             <td>
-                <form action="{% url 'tasks:task-edit' task.pk %}" method="get" style="display:inline;">
+                <form action="{% url 'tasks:task-edit' task.pk %}" method="post" style="display:inline;">
+                    {% csrf_token %}
                     <button type="submit" class="btn btn-warning">Редактировать</button>
                 </form>
             </td>
@@ -57,10 +56,16 @@
             </td>
         </tr>
         {% endfor %}
+
+
         </tbody>
     </table>
     {% else %}
     <p>Нет задач.</p>
     {% endif %}
+
+
+
+
 </div>
 {% endblock %}
